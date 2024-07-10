@@ -29,6 +29,8 @@ export const Input = styled.input`
   width: 100%;
   font-size: 16px;
   &[type="submit"] {
+    background-color: #1d9bf0;
+    color: white;
     cursor: pointer;
     &:hover {
       opacity: 0.8;
@@ -45,5 +47,12 @@ export const Switcher = styled.span`
   margin-top: 20px;
   a {
     color: #1d9bf0;
+  }
+  #forgot {
+    margin-top: 10px;
+    display: flex;
+    font-size: 15px;
+    align-items: center;
+    justify-content: center;
   }
 `;
