@@ -48,7 +48,7 @@ export const Switcher = styled.span`
   a {
     color: #1d9bf0;
   }
-  #forgot {
+  .forgot-password {
     margin-top: 10px;
     display: flex;
     font-size: 15px;

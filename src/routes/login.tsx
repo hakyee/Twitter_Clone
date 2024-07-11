@@ -71,7 +71,7 @@ export default function CreateAccount() {
       <Switcher>
         Don't have an account?{" "}
         <Link to="/create-account">Create one &rarr;</Link>
-        <Link id="forgot" to="/change-pwd">
+        <Link className="forgot-password" to="/change-pwd">
           Forgot your Password?
         </Link>
       </Switcher>

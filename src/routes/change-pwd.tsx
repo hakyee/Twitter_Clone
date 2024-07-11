@@ -53,10 +53,7 @@ export default function ChangePwd() {
           type="email"
           required
         />
-        <Input
-          type="submit"
-          value={isLoading ? "Loading..." : "send email  "}
-        />
+        <Input type="submit" value={isLoading ? "Loading..." : "Send"} />
       </Form>
       {error !== "" ? <Error>{error}</Error> : null}
     </Wrapper>
