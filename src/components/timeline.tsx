@@ -1,10 +1,15 @@
-import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+import {
+  collection,
+  limit,
+  onSnapshot,
+  orderBy,
+  query,
+} from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import { db } from "../routes/firebase";
 import Tweet from "./tweet";
 import { Unsubscribe } from "firebase/auth";
-import { limit } from "firebase/firestore/lite";
 
 export interface ITweet {
   id: string;
