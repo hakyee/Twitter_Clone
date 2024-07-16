@@ -1,10 +1,4 @@
-import {
-  collection,
-  getDocs,
-  onSnapshot,
-  orderBy,
-  query,
-} from "firebase/firestore";
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import { db } from "../routes/firebase";
@@ -31,7 +25,7 @@ export default function Timeline() {
   const [tweets, setTweet] = useState<ITweet[]>([]);
   useEffect(() => {
     let unsubscribe: Unsubscribe | null = null;
-    const fetchTweeets = async () => {
+    const fetchTweets = async () => {
       const tweetsQuery = query(
         collection(db, "tweets"),
         orderBy("createdAt", "desc"),
@@ -64,7 +58,7 @@ export default function Timeline() {
         setTweet(tweets);
       });
     };
-    fetchTweeets();
+    fetchTweets();
     return () => {
       unsubscribe && unsubscribe();
     };
