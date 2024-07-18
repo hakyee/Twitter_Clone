@@ -11,6 +11,7 @@ import LoadingScreen from "./components/loading-screen";
 import { auth } from "./routes/firebase";
 import ProtectedRoute from "./components/protected-route";
 import ChangePwd from "./routes/change-pwd";
+import Edit from "./routes/edit";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "profile",
         element: <Profile />,
+      },
+      {
+        path: "edit",
+        element: <Edit />,
       },
     ],
   },

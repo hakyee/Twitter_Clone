@@ -3,6 +3,7 @@ import { ITweet } from "./timeline";
 import { auth, db, storage } from "../routes/firebase";
 import { deleteDoc, doc } from "firebase/firestore";
 import { deleteObject, ref } from "firebase/storage";
+import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled.div`
   display: grid;
@@ -30,6 +31,19 @@ const Payload = styled.p`
   font-size: 18px;
 `;
 
+const EditButton = styled.button`
+  background-color: #1d9cf0ea;
+  color: white;
+  font-weight: 600;
+  border: 0;
+  font-size: 12px;
+  padding: 5px 10px;
+  margin-right: 10px;
+  text-transform: uppercase;
+  border-radius: 5px;
+  cursor: pointer;
+`;
+
 const DeleteButton = styled.button`
   background-color: tomato;
   color: white;
@@ -42,8 +56,14 @@ const DeleteButton = styled.button`
   cursor: pointer;
 `;
 
+const BtnWrapper = styled.div``;
+
 export default function Tweet({ username, photo, tweet, userId, id }: ITweet) {
+  const navigate = useNavigate();
   const user = auth.currentUser;
+  const onEdit = () => {
+    navigate("/edit", { state: { btweet: tweet, bphoto: photo, id } });
+  };
   const onDelete = async () => {
     const ok = confirm("Are you sure you want to delete this tweet?");
     if (!ok || user?.uid !== userId) return;
@@ -64,7 +84,10 @@ export default function Tweet({ username, photo, tweet, userId, id }: ITweet) {
         <Username>{username}</Username>
         <Payload>{tweet}</Payload>
         {user?.uid === userId ? (
-          <DeleteButton onClick={onDelete}>Delete</DeleteButton>
+          <BtnWrapper>
+            <EditButton onClick={onEdit}>Edit</EditButton>
+            <DeleteButton onClick={onDelete}>Delete</DeleteButton>
+          </BtnWrapper>
         ) : null}
       </Column>
       <Column>{photo ? <Photo src={photo} /> : null}</Column>
